@@ -1,5 +1,6 @@
 from rest_framework.permissions import BasePermission
 
+
 class IsModer(BasePermission):
 
     def has_permission(self, request, view):
@@ -18,3 +19,8 @@ class IsOwner(BasePermission):
 class IsSelfUser(BasePermission):
     def has_object_permission(self, request, view, obj):
         return obj == request.user
+
+
+class IsActiveUser(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_active

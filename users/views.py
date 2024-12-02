@@ -10,8 +10,11 @@ from users.permissions import IsModer, IsOwner, IsSelfUser
 from users.serializers import OtherUserSerializer, UserSerializer
 
 
-
 class UserViewSet(ModelViewSet):
+    """
+    контроллер пользователя
+    """
+
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = [IsAuthenticated]
