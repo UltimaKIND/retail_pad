@@ -8,40 +8,100 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Node',
+            name="Node",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('created_at', models.DateField(auto_now_add=True)),
-                ('duty_supp', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True, verbose_name='задолженность')),
-                ('supplier', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='retail_pad.node', verbose_name='поставщик')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("created_at", models.DateField(auto_now_add=True)),
+                (
+                    "duty_supp",
+                    models.DecimalField(
+                        blank=True,
+                        decimal_places=2,
+                        max_digits=10,
+                        null=True,
+                        verbose_name="задолженность",
+                    ),
+                ),
+                (
+                    "supplier",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="retail_pad.node",
+                        verbose_name="поставщик",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Contacts',
+            name="Contacts",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('email', models.EmailField(max_length=254, unique=True, verbose_name='email')),
-                ('country', models.CharField(max_length=100, verbose_name='страна')),
-                ('city', models.CharField(max_length=100, verbose_name='город')),
-                ('street', models.CharField(max_length=100, verbose_name='улица')),
-                ('house', models.CharField(max_length=100, verbose_name='номер дома')),
-                ('node', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='contacts', to='retail_pad.node')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        max_length=254, unique=True, verbose_name="email"
+                    ),
+                ),
+                ("country", models.CharField(max_length=100, verbose_name="страна")),
+                ("city", models.CharField(max_length=100, verbose_name="город")),
+                ("street", models.CharField(max_length=100, verbose_name="улица")),
+                ("house", models.CharField(max_length=100, verbose_name="номер дома")),
+                (
+                    "node",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="contacts",
+                        to="retail_pad.node",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='название')),
-                ('model', models.CharField(max_length=100, verbose_name='модель')),
-                ('market_entry_date', models.DateField(blank=True, null=True)),
-                ('node', models.ForeignKey(on_delete=models.Model, related_name='products', to='retail_pad.node')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, verbose_name="название")),
+                ("model", models.CharField(max_length=100, verbose_name="модель")),
+                ("market_entry_date", models.DateField(blank=True, null=True)),
+                (
+                    "node",
+                    models.ForeignKey(
+                        on_delete=models.Model,
+                        related_name="products",
+                        to="retail_pad.node",
+                    ),
+                ),
             ],
         ),
     ]
