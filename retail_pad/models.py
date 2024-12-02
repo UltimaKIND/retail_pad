@@ -5,7 +5,7 @@ NULLABLE = {'null': True, 'blank': True}
 class Node(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateField(auto_now_add=True)
-    supplier = models.ForeignKey('self', on_delete=models.SET_NULL, verbose_name='поставщик', **NULLABLE)
+    supplier = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name='поставщик', **NULLABLE)
     duty_supp = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='задолженность', **NULLABLE)
 
     def __str__(self):

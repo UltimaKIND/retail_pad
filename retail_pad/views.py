@@ -7,3 +7,7 @@ from rest_framework.filters import OrderingFilter
 class NodeViewSet(viewsets.ModelViewSet):
     serializer_class = NodeSerializer
     queryset = Node.objects.all()
+
+class ProductViewSet(viewsets.ModelViewSet):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
