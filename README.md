@@ -44,6 +44,7 @@
 ```sh
 python3 manage.py loaddata fixtures/retail_pad.json
 ```
+
 для создания пользователя есть команда
 ```sh
 python3 manage.py create_su
