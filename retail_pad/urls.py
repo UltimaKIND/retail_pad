@@ -6,8 +6,8 @@ from django.urls import path
 app_name = RetailPadConfig.name
 
 router = DefaultRouter()
-router.register(r"retail_pad", NodeViewSet, basename="node")
-router.register(r"product", ProductViewSet, basename="product")
+router.register(r'retail_pad', NodeViewSet, basename='node')
+router.register(r'product', ProductViewSet, basename='product')
 
-
-urlpatterns = [] + router.urls
+urlpatterns = [
+] + router.urls
