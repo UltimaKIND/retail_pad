@@ -7,12 +7,6 @@ class Node(models.Model):
     created_at = models.DateField(auto_now_add=True)
     supplier = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name='поставщик', **NULLABLE)
     duty_supp = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='задолженность', **NULLABLE)
-
-    def __str__(self):
-        return f'{self.name}'
-
-class Contacts(models.Model):
-    node = models.OneToOneField(Node, on_delete=models.CASCADE, related_name='contacts')
     email = models.EmailField(unique=True, verbose_name='email')
     country = models.CharField(max_length=100, verbose_name='страна')
     city = models.CharField(max_length=100, verbose_name='город')
@@ -20,10 +14,10 @@ class Contacts(models.Model):
     house = models.CharField(max_length=100, verbose_name='номер дома')
 
     def __str__(self):
-        return f'{self.email}, {self.country}, {self.city}, {self.street}, {self.house}'
+        return f'{self.name}'
 
 class Product(models.Model):
-    node = models.ManyToManyField(Node, on_delete=models.CASCADE, related_name='products')
+    node = models.ManyToManyField(Node, related_name='products')
     name = models.CharField(max_length=100, verbose_name='название')
     model = models.CharField(max_length=100, verbose_name='модель')
     market_entry_date = models.DateField(**NULLABLE)
