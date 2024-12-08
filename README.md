@@ -40,12 +40,23 @@
 Добавлена возможность фильтрации объектов по определенной стране.
 Доступ к api возможен только для активных пользователей
 
-для наполнения бд есть фикстуры
+сборка и запуск
 ```sh
-python3 manage.py loaddata fixtures/retail_pad.json
+docker compose -f docker-compose.prod.yml up -d --build
 ```
+скопировать статические файлы в staticfiles
+```
+docker compose -f docker-compose.prod.yml exec web python manage.py collectstatic --no-input --clear
+```
+для создания superuser
+```sh
+docker compose -f docker-compose.prod.yml exec web python manage.py create_su
+```
+для остановки сервиса
+```sh
+docker compose -f docker-compose.prod.yml down -v
+```
+Тестирование
+эндпониты api покрыты тестами
 
-для создания пользователя есть команда
-```sh
-python3 manage.py create_su
-```
+приложение доступно по адресу localhost:1337
