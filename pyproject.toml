@@ -14,7 +14,8 @@ psycopg2-binary = "^2.9.10"
 djangorestframework-simplejwt = "^5.3.1"
 django-filter = "^24.3"
 pillow = "^11.0.0"
-black = "^24.10.0"
+pytest-django = "^4.9.0"
+gunicorn = "^23.0.0"
 
 
 [build-system]
