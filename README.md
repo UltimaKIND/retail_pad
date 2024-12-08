@@ -48,6 +48,10 @@ docker compose -f docker-compose.prod.yml up -d --build
 ```
 docker compose -f docker-compose.prod.yml exec web python manage.py collectstatic --no-input --clear
 ```
+накатить миграции на бд
+```
+docker compose -f docker-compose.prod.yml exec web python manage.py migrate --noinput
+```
 для создания superuser
 ```sh
 docker compose -f docker-compose.prod.yml exec web python manage.py create_su
