@@ -163,3 +163,5 @@ cython_debug/
 data
 django
 .env
+.env.prod
+.env.prod.db
